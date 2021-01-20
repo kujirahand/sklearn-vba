@@ -1,4 +1,4 @@
 cd src
-pyinstaller skl.py --onefile
-cp dist\skl\skl.exe ..\..\skl.exe
+pyinstaller skl.py --onefile --clearn
+copy dist\skl\skl.exe ..\..\skl.exe
 pause
