@@ -29,12 +29,16 @@ Private Sub SKLInit()
     ' Find SKLPath
     If SKLPath = "" Then
         ' skl dir
-        SKLPath = ThisWorkbook.Path & "skl\skl.exe"
+        SKLPath = ThisWorkbook.Path & "\skl\skl.exe"
         If FileExists(SKLPath) = False Then
-            ' src\dict dir -- source
-            SKLPath = ThisWorkbook.Path & "src\dict\skl.exe"
+            ' src\dist dir
+            SKLPath = ThisWorkbook.Path & "\src\dist\skl\skl.exe"
             If FileExists(SKLPath) = False Then
-                SKLPath = ""
+                ' onefile
+                SKLPath = ThisWorkbook.Path & "\src\dist\skl.exe"
+                If FileExists(SKLPath) = False Then
+                    SKLPath = ""
+                End If
             End If
         End If
     End If
