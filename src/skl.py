@@ -1,73 +1,50 @@
-import sys, os
+import sys, os, re
 
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score
+import skl_test, skl_train, skl_predict
+import skl_utils as utils
 
 # path
 app_path = os.path.abspath(sys.argv[0])
 app_dir = os.path.dirname(app_path)
-# command
-app_args = {
-    "command":"",
-    "algorythm":"",
-    "args":[],
-}
 
 def usage():
-    print("[USAGE] skl command algorythm args ...")
+    print("[USAGE] skl (test|train|predict) args ...")
     quit()
-    exit
 
 def main():
+    # init args
+    argv = utils.args
+    utils.init(argv)
     # parse command line
     if len(sys.argv) == 1:
         usage()
         exit
     # argv
-    for v in sys.argv:
-        if app_args["command"] == "":
-            app_args["command"] = v
-            continue
-        if app_args["algorythm"] == "":
-            app_args["algorythm"] = v
+    for i, v in enumerate(sys.argv):
+        if i == 0: continue
+        if i == 1 and re.search('\.py$', v): continue
+        if argv["command"] == "":
+            argv["command"] = v
             continue
         if "=" in v:
             key, val = v.split("=", 2)
-            app_args[key] = val
+            argv[key] = val
             continue
-        app_args["args"].append(v)
+        argv["args"].append(v)
     # exec command
-    cmd = app_args["command"]
+    cmd = argv["command"]
     if cmd == "test":
-        test_data()
+        skl_test.exec(argv)
         return
     if cmd == "train":
-        train_data()
+        skl_train.exec(argv)
         return
     if cmd == "predict":
-        predict_data()
+        skl_predict.exec(argv)
         return
     # command not found
     print("[error] command not found")
     usage()
-
-def test_data_usage():
-    print("[USAGE] skl test (algo) in=xxx.csv")
-    quit()
-
-def test_data():
-    if not "in" in app_args:
-        test_data_usage()
-        return
-    
-
-def train_data():
-    pass
-
-def predict_data():
-    pass
 
 if __name__ == '__main__':
     main()
