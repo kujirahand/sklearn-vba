@@ -7,6 +7,9 @@ from sklearn.svm import LinearSVC
 from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import SGDClassifier
+from sklearn.linear_model import LinearRegression
+from sklearn.isotonic import IsotonicRegression
+
 args = {}
 
 def init(args):
@@ -53,7 +56,7 @@ def load_csv(file_path):
     return y, x
 
 def get_algo():
-    return "(svm|LinearSVC|MLP|RandomForest)"
+    return "(svm|LinearSVC|MLP|RandomForest|LinearRegression|IsotonicRegression)"
 
 def get_class():
     name = args["algo"].lower()
@@ -67,6 +70,10 @@ def get_class():
         clf = RandomForestClassifier()
     elif name == "sgd":
         clf = SGDClassifier()
+    elif name == "LinearRegression":
+        clf = LinearRegression(normalize=True)
+    elif name == "IsotonicRegression":
+        clf = IsotonicRegression(out_of_bounds="clip")
     else:
         clf = SVC()
     return clf
