@@ -12,7 +12,6 @@ def show_usage():
     print("     algo=" + utils.get_algo())
     print("     delimiter=(,|tab|;)")
     print("     idcol=1 ... class id column")
-    quit()
 
 def exec(args):
     # parse parameters

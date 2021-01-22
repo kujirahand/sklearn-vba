@@ -12,7 +12,6 @@ def show_usage():
     print("     count=10 ... try count")
     print("     delimiter=(,|tab|;)")
     print("     idcol=1 ... class id column")
-    quit()
 
 def exec(args):
     # parse parameters

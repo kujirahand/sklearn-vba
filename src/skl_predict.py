@@ -11,7 +11,6 @@ def show_usage():
     print("Options:")
     print("     algo=" + utils.get_algo())
     print("     delimiter=(,|tab|;)")
-    quit()
 
 def exec(args):
     # parse parameters

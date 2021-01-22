@@ -1,5 +1,4 @@
+echo "--- BUILD ---"
 cd src
-rem pyinstaller skl.py --onefile --clean
-pyinstaller skl.py --clean
-rem copy dist\skl\skl.exe ..\..\skl.exe
+pyinstaller skl.py --clean --noconfirm
 pause

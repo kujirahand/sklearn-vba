@@ -9,6 +9,10 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import SGDClassifier
 from sklearn.linear_model import LinearRegression
 from sklearn.isotonic import IsotonicRegression
+# 暗黙的なインポート
+import sklearn.utils._weight_vector
+import sklearn.neighbors._typedefs
+import sklearn.neighbors._quad_tree
 
 args = {}
 

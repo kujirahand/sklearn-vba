@@ -9,7 +9,7 @@ app_dir = os.path.dirname(app_path)
 
 def usage():
     print("[USAGE] skl (test|train|predict) args ...")
-    quit()
+    return
 
 def main():
     # init args
@@ -18,7 +18,7 @@ def main():
     # parse command line
     if len(sys.argv) == 1:
         usage()
-        exit
+        return
     # argv
     for i, v in enumerate(sys.argv):
         if i == 0: continue
