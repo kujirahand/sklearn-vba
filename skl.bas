@@ -28,16 +28,20 @@ End Sub
 Private Sub SKLInit()
     ' Find SKLPath
     If SKLPath = "" Then
-        ' skl dir
-        SKLPath = ThisWorkbook.Path & "\skl\skl.exe"
+        ' Check ENV
+        SKLPath = Environ("SKLEARN_VBA_EXE")
         If FileExists(SKLPath) = False Then
-            ' src\dist dir
-            SKLPath = ThisWorkbook.Path & "\src\dist\skl\skl.exe"
+            ' skl dir
+            SKLPath = ThisWorkbook.Path & "\skl\skl.exe"
             If FileExists(SKLPath) = False Then
-                ' onefile
-                SKLPath = ThisWorkbook.Path & "\src\dist\skl.exe"
+                ' src\dist dir
+                SKLPath = ThisWorkbook.Path & "\src\dist\skl\skl.exe"
                 If FileExists(SKLPath) = False Then
-                    SKLPath = ""
+                    ' onefile
+                    SKLPath = ThisWorkbook.Path & "\src\dist\skl.exe"
+                    If FileExists(SKLPath) = False Then
+                        SKLPath = ""
+                    End If
                 End If
             End If
         End If
@@ -50,13 +54,22 @@ Private Function GetSKLPath() As String
         Dim py
         py = ThisWorkbook.Path & "\src\skl.py"
         If FileExists(py) Then
-            GetSKLPath = "python " & qq(ThisWorkbook.Path & "\src\skl.py")
+            SKLPath = py
         Else
             Debug.Print "[ERROR] skl.exe not found ..."
         End If
-    Else
-        GetSKLPath = qq(SKLPath)
     End If
+    
+    ' pytnon or exe
+    Dim re
+    Set re = CreateObject("VBScript.RegExp")
+    re.Pattern = "\.exe$"
+    If re.Test(SKLPath) Then
+        GetSKLPath = qq(SKLPath)
+    Else
+        GetSKLPath = "python " & qq(SKLPath)
+    End If
+    Set re = Nothing
 End Function
 
 
