@@ -33,13 +33,20 @@ def csv_reader(file_path):
     fp = open(file_path, "rt", encoding="utf-8")
     return fp, csv.reader(fp, delimiter=delimiter)
 
+def conv_float(v):
+    if v == "": return ""
+    try:
+        return float(v)
+    except:
+        return v
+
 def load_csv_data(file_path):
     x = []
     # read
     fp, reader = csv_reader(file_path)
     for row in reader:
         if len(row) == 0: continue
-        row = [float(v) for v in row] # データを実数に変換
+        row = [conv_float(v) for v in row] # データを実数に変換
         x.append(row)
     fp.close()
     return x
@@ -48,14 +55,17 @@ def load_csv(file_path):
     y = []
     x = []
     # column
-    idcol = int(args["idcol"]) - 1
+    if args["idcol"].isnumeric():
+        idcol = int(args["idcol"]) - 1
     # read
     fp, reader = csv_reader(file_path)
     for row in reader:
         if (len(row) < idcol): continue
-        y.append(row.pop(idcol)) # sklearnではラベルは文字列も許容される
-        row = [float(v) for v in row] # その他のデータは実数に変換
+        lbl = row.pop(idcol)
+        y.append(lbl) # sklearnではラベルは文字列も許容される
+        row = [conv_float(v) for v in row] # その他のデータは実数に変換
         x.append(row)
+        # print("# ", row)
     fp.close()
     return y, x
 
