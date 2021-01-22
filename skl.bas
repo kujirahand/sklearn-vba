@@ -120,21 +120,21 @@ Public Function SKLExec(ByVal Commands As String) As String
     ErrFile = GetTempPath(".txt")
     bat = skl & " " & _
         Commands & " " & _
-        " 1>" & ResultFile & _
-        " 2>" & ErrFile & vbCrLf
+        " 1>" & qq(ResultFile) & _
+        " 2>" & qq(ErrFile) & vbCrLf
     SaveToFile BatFile, bat, "Shift_JIS"
     Debug.Print bat
     
     ' バッチを実行
     If ShellWait(BatFile) Then
-        Res = LoadFromFile(ResultFile, "utf-8")
+        Res = LoadFromFile(ResultFile, "Shift_JIS")
         SKLExec = Res
     Else
         ErrMsg = Trim(LoadFromFile(ErrFile, "Shift_JIS"))
         If ErrMsg <> "" Then
             Debug.Print "[ERROR] " & ErrMsg
         End If
-        Res = LoadFromFile(ResultFile, "utf-8")
+        Res = LoadFromFile(ResultFile, "Shift_JIS")
         If Res <> "" Then
             Debug.Print "[PRINT] " & Res
         End If
