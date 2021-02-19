@@ -1,7 +1,7 @@
-# sklearn-vba
-scikit-learn for Excel VBA(Windows) 
+# sklearn-vba - scikit-learn for Excel VBA(Windows) 
 
-scikit-learnを手軽にExcel VBAから使うためのプロジェクト。
+Pythonの人気機械学習ライブラリ『scikit-learn』をPythonなしで手軽にExcel VBAから使うためのプロジェクト。
+ワークシートにデータを書いて、ラベル列を指定するだけで、機械学習のデータセットが作れます。VBAだけで機械学習が実践できます。
 
 ## 準備 - バイナリをダウンロードする場合
 
