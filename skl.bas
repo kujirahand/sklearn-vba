@@ -9,6 +9,8 @@ Public Const sklSVM = "SVM"
 Public Const sklMLP = "MLP"
 Public Const sklRandomForest = "RandomForest"
 Public Const sklLinearSVC = "LinearSVC"
+Public Const sklSGD = "SGD"
+Public Const sklNativeBayes = "NATIVE_BAYES"
 Public Const sklLinearRegression = "LinearRegression"
 Public Const sklIsotonicRegression = "IsotonicRegression"
 

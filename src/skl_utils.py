@@ -9,6 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import SGDClassifier
 from sklearn.linear_model import LinearRegression
 from sklearn.isotonic import IsotonicRegression
+from sklearn.naive_bayes import GaussianNB
 # 暗黙的なインポート
 import sklearn.utils._weight_vector
 import sklearn.neighbors._typedefs
@@ -84,6 +85,8 @@ def get_class():
         clf = RandomForestClassifier()
     elif name == "sgd":
         clf = SGDClassifier()
+    elif name == "native_bayes":
+        clf = GaussianNB()
     elif name == "LinearRegression":
         clf = LinearRegression(normalize=True)
     elif name == "IsotonicRegression":
