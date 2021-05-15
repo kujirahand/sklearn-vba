@@ -3,6 +3,10 @@
 Pythonの人気機械学習ライブラリ『scikit-learn』をPythonなしで手軽にExcel VBAから使うためのプロジェクト。
 ワークシートにデータを書いて、ラベル列を指定するだけで、機械学習のデータセットが作れます。VBAだけで機械学習が実践できます。
 
+- このライブラリは、書籍『プログラマーの本気がExcelを覚醒させる 超絶ExcelVBA』のために作成したライブラリです。書籍の中で詳しい使い方を紹介しています。
+ - [→プログラマーの本気がExcelを覚醒させる 超絶ExcelVBA](https://github.com/kujirahand/chozetu-excel-vba)
+
+
 ## 準備 - バイナリをダウンロードする場合
 
  - (1) [こちら](https://github.com/kujirahand/sklearn-vba/releases)から最新の「dist.zip」をダウンロード。
