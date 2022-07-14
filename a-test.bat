@@ -1,4 +1,4 @@
-set IN_FILE="data/iris.data"
+set IN_FILE="data/iris.csv"
 set ID_COLUMN=5
 
 echo "* randomforest:"

@@ -11,9 +11,9 @@ from sklearn.linear_model import LinearRegression
 from sklearn.isotonic import IsotonicRegression
 from sklearn.naive_bayes import GaussianNB
 # 暗黙的なインポート
-import sklearn.utils._weight_vector
-import sklearn.neighbors._typedefs
-import sklearn.neighbors._quad_tree
+#import sklearn.utils._weight_vector
+#import sklearn.neighbors._typedefs
+#import sklearn.neighbors._quad_tree
 
 args = {}
 
